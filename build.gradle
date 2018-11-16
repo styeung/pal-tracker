@@ -11,4 +11,27 @@ repositories {
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+
+bootRun.environment([
+        "WELCOME_MESSAGE": "hello",
+        "PORT": "some port",
+        "MEMORY_LIMIT": "some memory limit",
+        "CF_INSTANCE_INDEX": "cf instance index",
+        "CF_INSTANCE_ADDR": "cf instance address",
+])
+
+test.environment([
+        "WELCOME_MESSAGE": "Hello from test",
+        "PORT": "some port",
+        "MEMORY_LIMIT": "some memory limit",
+        "CF_INSTANCE_INDEX": "cf instance index",
+        "CF_INSTANCE_ADDR": "cf instance address",
+])
+
+test {
+    testLogging {
+        exceptionFormat = 'full'
+    }
 }
